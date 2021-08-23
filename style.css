@@ -1,0 +1,61 @@
+body{
+    background: rgb(224, 222, 222);
+
+}
+table {
+    background: white;
+    border-collapse: collapse;
+    border: 1px solid
+}
+
+td {
+    border: 1px solid black;
+    padding: 7px 4px;
+
+}
+
+th {
+    border: 1px solid black
+}
+
+tr {
+    border: 1px solid;
+}
+.form{
+    margin:5px auto;
+    background: rgb(236, 234, 234);
+    width: clamp(100px,80%,450px);
+    display:none;
+    flex-direction:column;
+    gap:2em;
+    max-width:400px;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 2px 3px 5px;
+    padding:10px 15px 30px;
+    /* transition: display 300ms ; */
+}
+input{
+    padding: 0.2em 0.5em;
+    outline: none;
+    font-size:1.2rem;
+    letter-spacing: 0.2ch;
+    font-weight: 200;
+    color: rgb(70, 67, 67);
+    background: transparent;
+
+}
+label{
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    width: clamp(300px, 100%, 450px);
+    gap:0.5em;
+    text-transform:uppercase;
+}
+.btn{
+    padding: 0.5rem 2rem;
+    background: hsl(93, 74%, 48%);
+    margin: 10px auto;
+
+}
