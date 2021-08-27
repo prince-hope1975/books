@@ -2,25 +2,42 @@ body{
     background: rgb(224, 222, 222);
 
 }
-table {
-    background: white;
+.table {
+    /* background: white; */
     border-collapse: collapse;
-    border: 1px solid
+    /* border: 1px solid black; */
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 2em;
+    align-items: center;
+    margin:auto;
+    justify-content:center;
 }
-
-td {
-    border: 1px solid black;
-    padding: 7px 4px;
-
-}
-
-th {
-    border: 1px solid black
-}
-
-tr {
+.card{
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
     border: 1px solid;
+    padding: 1.5em;
+    height: 100%;
+    justify-content: space-between
+
 }
+.card span{
+    background: hsl(94, 96%, 27%);
+    color: white;
+    padding: 0.1em .8em;
+}
+.card p,.card h1, .card, h2{
+    display:flex;
+    flex-direction: column;
+    margin-bottom: 5px;
+    /* max-width: 300px; */
+}
+
+
+
 .form{
     margin:5px auto;
     background: rgb(236, 234, 234);
@@ -58,4 +75,13 @@ label{
     background: hsl(93, 74%, 48%);
     margin: 10px auto;
 
+}
+.contain{
+
+    display: grid;
+    padding: 1em;
+}
+
+.checked{
+    border: none;
 }

@@ -23,30 +23,30 @@ function Book(title, author, pages, isRead) {
 function addBookLibrary(array){
   const table = document.querySelector(".table")
   
-  // table.innerHTML = "";
-  array.forEach(({title,pages,author, isRead},index)=>{
 
-        const newElement = document.createElement("tr")
-        newElement.innerHTML = `<tr>
-            <td>${title}</td>
-            <td>${pages}</td>
-            <td>${author}</td>
-            <td>${isRead}<button class="checked" data-key="${index}">${this.isRead ? "Check" : "uncheck"}</button></td>
-            </tr>`;
+  array.forEach(({title,pages,author, isRead},index)=>{
+        const newElement = document.createElement("div")
+        
+        newElement.innerHTML = `<div class="card">
+            <h1><span>TITLE: </span>${title}</h1>
+            <h2><span>AUTHOR: </span>${author}</h2>
+            <p><span>PAGES: </span>${pages}</p>
+            <button data-key=
+            "${index}"><input type="button" class="checked" value="True" data-key="${index}" onclick="toggle(this)"/></div>
+            </div>`;
             
             table.appendChild(newElement)
           })
         }
 
 
-
-        const addToBooklist =()=>{
+  
+  const addToBooklist =()=>{
           const title = document.querySelector(".title").value
   const isRead = document.querySelector(".Read").value
   const author = document.querySelector(".author").value
   const pages = document.querySelector(".pages").value
-  console.log(title,isRead,author,pages)
-  return library =[...library,new Book(title,author,pages,isRead)]
+  return library =[new Book(title,author,pages,isRead)]
 }
 const changeState =()=>{
   const form = document.querySelector(".form");
@@ -60,17 +60,35 @@ addBtn.addEventListener("click",()=>{
 const submitBtn = document.querySelector(".submit")
 submitBtn.addEventListener("click",(e)=>{
   e.preventDefault();
-  addBookLibrary(addToBooklist());
+  changeState()
+  localStorage.setItem("library",addBookLibrary(addToBooklist()))
+  addBookLibrary(localStorage.getItem("library"));
+  console.log(addToBooklist())
 
 })
+
+  function toggle(button) {
+    switch (button.value) {
+      case "True":
+        button.value = "False";
+        break;
+      case "False":
+        button.value = "True";
+        break;
+    }
+  }
+
 window.onload = addBookLibrary(library);
+
 
 
 const but = document.querySelectorAll(".checked")
 but.forEach((item)=>{
-item.addEventListener("click",(e)=>{
-
-let final =library[e.target.dataset.key].toggle()
-console.log(final)
+  item.addEventListener("click",(e)=>{
+    console.log(e.target.parentNode, e.target.dataset.key)
+    library[e.target.dataset.key].toggle()
+    e.parentNode.dataset.key = !e.target.dataset.key
+    e.target.parentNode.firstChild.textContent=e.target.parentNode.dataset.key
+    // addBookLibrary(library) 
 })
 })
